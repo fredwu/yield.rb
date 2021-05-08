@@ -28,7 +28,7 @@ To include the wallet balances, go to YieldWatch, fetch your wallet, and open th
 
 ## Assumptions
 
-1. You only care about the amounts of the underlying tokens - which changes all the time due to IP ([Impermanent Loss](https://www.google.com/search?q=impermanent+loss)).
+1. You only care about the amounts of the underlying tokens - which changes all the time due to IL ([Impermanent Loss](https://www.google.com/search?q=impermanent+loss)).
 1. Only tokens that have already been deposited into the vaults will be counted, those that are pending are ignored.
 1. Coin names on different protocols are consolidated into one, e.g. `WBNB`, `iBNB` and `beltBNB` are all consolidated into `BNB`.
 1. Only the farms and tokens I personally use have been tested.
