@@ -42,7 +42,7 @@ class YieldWatchParser
 
   def output
     hash = Hash[parse.inject do |result, tokens|
-      result.merge(tokens) { |_, x, y| (x + y).round(ROUNDING) }
+      result.merge(tokens) { |_, n1, n2| (n1 + n2).round(ROUNDING) }
     end.sort]
 
     hash.each { |k, v| puts "#{k}\t#{v}" }
@@ -89,7 +89,7 @@ class YieldWatchParser
   end
 
   def parse_pool(pool)
-    return if pool["depositToken"] =~ /acs/
+    return if pool["depositToken"] =~ /^acs/
 
     {
       token_name(pool["depositToken"]) => pool["depositedTokens"].round(ROUNDING)
