@@ -7,3 +7,5 @@ yieldwatch:
   file:
 settings:
   rounding: 4
+  hide_tokens:
+    - DOGE

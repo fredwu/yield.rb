@@ -17,7 +17,7 @@ class Yield
   def self.output(data, settings)
     hash = Hash[data.flatten.inject do |result, tokens|
       result.merge(tokens) { |_, n1, n2| (n1 + n2).round(settings["rounding"]) }
-    end.sort]
+    end.reject{ |k, v| settings["hide_tokens"].include?(k) }.sort]
 
     hash.each { |k, v| puts "#{k}\t#{v}" }
   end

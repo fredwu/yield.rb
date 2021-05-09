@@ -22,22 +22,29 @@ Copy or rename `config.sample.yml` to `config.yml`:
 
 ### Configurations
 
+| Option      | Type          | Description
+| ----------- | ------------- | -----------
+| rounding    | integer       | decimal rounding, defaults to 4
+| hide_tokens | array(string) | tokens that should be hidden from output
+
+<sup>The `hide_tokens` option is useful for hiding dusts and/or tokens you don't care about.</sup>
+
 #### Binance
 
-| Option     | Description
-| ---------- | -----------
-| api_key    | API key
-| secret_key | Secret key
-| file       | relative path to the Binance JSON payload file (`Daily Account Snapshot (USER_DATA)`)
+| Option     | Type          | Description
+| ---------- | ------------- | -----------
+| api_key    | string        | API key
+| secret_key | string        | Secret key
+| file       | string        | relative path to the Binance JSON payload file (`Daily Account Snapshot (USER_DATA)`)
 
 <sup>The `file` option is only needed if you don't want to supply the API and secret keys.</sup>
 
 #### YieldWatch
 
-| Option | Description
-| ------ | -----------
-| wallet | BSC wallet address
-| file   | relative path to the YieldWatch JSON payload file
+| Option | Type          | Description
+| ------ | ------------- | -----------
+| wallet | string        | BSC wallet address
+| file   | string        | relative path to the YieldWatch JSON payload file
 
 <sup>Please note that if you are using the wallet address, the wallet balances will be missing from the calculation. To include the wallet balances, go to YieldWatch, fetch your wallet, and open the browser console to copy the JSON payload.</sup>
 
