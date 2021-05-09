@@ -61,9 +61,7 @@ class YieldWatch
 
     amount = pool["currentTokens"] || pool["depositedTokens"]
 
-    {
-      token_name(pool["depositToken"]) => amount
-    }
+    { token_name(pool["depositToken"]) => amount }
   end
 
   def token_name(name)
