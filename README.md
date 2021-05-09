@@ -2,6 +2,8 @@
 
 This is a simple ruby script that pulls data from [YieldWatch](https://www.yieldwatch.net/) and reconstructs them for one purpose: to get the aggregated amounts of underlying tokens.
 
+## Why?
+
 In YieldWatch, as much as I love the details it provides on yields, it lacks a consolidated view on how much underlying tokens I have. Imagine having deposited tokens into multiple liquidity pools (LPs) and having to manually find and add up the underlying tokens (not LP tokens) one by one...
 
 Some other wallet trackers support this, but none of them supports all the yield farms I use, namely ACryptoS.
@@ -22,14 +24,12 @@ Copy or rename `config.sample.yml` to `config.yml`:
 
 #### YieldWatch
 
-| Option | Description |
-| ------ | ----------- |
+| Option | Description
+| ------ | -----------
 | wallet | BSC wallet address
 | file   | relative path to the YieldWatch JSON payload file
 
-Please note that if you are using the wallet address, the wallet balances will be missing from the calculation.
-
-To include the wallet balances, go to YieldWatch, fetch your wallet, and open the browser console to copy the JSON payload.
+<sup>Please note that if you are using the wallet address, the wallet balances will be missing from the calculation. To include the wallet balances, go to YieldWatch, fetch your wallet, and open the browser console to copy the JSON payload.</sup>
 
 ## Assumptions
 

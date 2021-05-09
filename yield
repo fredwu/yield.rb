@@ -12,4 +12,16 @@ require_relative "./yield.rb/yieldwatch.rb"
 
 options = YAML.load_file("./config.yml")
 
-YieldWatch.new(options["yieldwatch"]).output
+class Yield
+  def self.output(data, settings)
+    hash = Hash[data.flatten.inject do |result, tokens|
+      result.merge(tokens) { |_, n1, n2| (n1 + n2).round(settings["rounding"]) }
+    end.sort]
+
+    hash.each { |k, v| puts "#{k}\t#{v}" }
+  end
+end
+
+Yield.output([
+  YieldWatch.new(options["settings"].merge(options["yieldwatch"])).parse
+], options["settings"])

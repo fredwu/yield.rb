@@ -1,9 +1,9 @@
 class YieldWatch
-  URI = "https://www.yieldwatch.net/api/all/"
+  URI      = "https://www.yieldwatch.net/api/all/"
   URI_ARGS = "?platforms=beefy,pancake,hyperjump,blizzard,bdollar,jetfuel,auto,bunny,acryptos,mdex,alpha,venus,cream"
-  ROUNDING = 4
 
   attr_accessor :json
+  attr_accessor :rounding
 
   def initialize(options = {})
     json = if file = options["file"]
@@ -15,17 +15,8 @@ class YieldWatch
     end
 
     @json = JSON.parse(json)
+    @rounding = options["rounding"]
   end
-
-  def output
-    hash = Hash[parse.inject do |result, tokens|
-      result.merge(tokens) { |_, n1, n2| (n1 + n2).round(ROUNDING) }
-    end.sort]
-
-    hash.each { |k, v| puts "#{k}\t#{v}" }
-  end
-
-  private
 
   def parse
     @json["result"].flat_map do |_name, farm|
@@ -40,9 +31,11 @@ class YieldWatch
     end
   end
 
+  private
+
   def parse_wallet(balances)
     balances.map do |balance|
-      { balance["symbol"] => balance["balance"].round(ROUNDING) }
+      { balance["symbol"] => balance["balance"].round(rounding) }
     end
   end
 
@@ -60,8 +53,8 @@ class YieldWatch
 
   def parse_lp(lp)
     {
-      token_name(lp["symbolToken0"]) => lp["currentToken0"].round(ROUNDING),
-      token_name(lp["symbolToken1"]) => lp["currentToken1"].round(ROUNDING)
+      token_name(lp["symbolToken0"]) => lp["currentToken0"].round(rounding),
+      token_name(lp["symbolToken1"]) => lp["currentToken1"].round(rounding)
     }
   end
 
@@ -69,7 +62,7 @@ class YieldWatch
     return if pool["depositToken"] =~ /^acs/
 
     {
-      token_name(pool["depositToken"]) => pool["depositedTokens"].round(ROUNDING)
+      token_name(pool["depositToken"]) => pool["depositedTokens"].round(rounding)
     }
   end
 
