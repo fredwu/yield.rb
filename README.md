@@ -24,7 +24,7 @@ Copy or rename `config.sample.yml` to `config.yml`:
 
 | Option         | Type          | Description
 | -------------- | ------------- | -----------
-| rounding       | integer       | decimal rounding, defaults to 4
+| rounding       | integer       | decimal rounding, defaults to 6
 | hide_tokens    | array(string) | tokens that should be hidden from output
 | include_tokens | string: float | manually add tokens and their amounts
 

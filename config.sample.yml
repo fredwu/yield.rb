@@ -6,7 +6,7 @@ yieldwatch:
   wallet:
   file:
 settings:
-  rounding: 4
+  rounding: 6
   hide_tokens:
     - DOGE
   include_tokens:
