@@ -85,6 +85,7 @@ These are the BSC (Binance Smart Chain) wallet trackers I have come across.
 - [Farm.Army](https://farm.army/)
 - [Farmfol.io](https://farmfol.io/)
 - [Growing.fi](https://www.growing.fi/)
+- [SCV](https://scv.finance/)
 - [tin.](https://tin.network/)
 - [YieldWatch](https://www.yieldwatch.net/)
 
