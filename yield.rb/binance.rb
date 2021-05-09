@@ -23,7 +23,7 @@ class Binance
     json["snapshotVos"][-2]["data"]["balances"].reject do |balance|
       balance["free"] == "0"
     end.map do |balance|
-      { token_name(balance["asset"]) => balance["free"].to_f }
+      { token_name(balance["asset"]) => balance["free"].to_f.round(rounding) }
     end
   end
 
