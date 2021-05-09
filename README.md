@@ -14,13 +14,18 @@ Here's what the output data looks like:
 
 ## Usage
 
-Pass in either the wallet address or the path to the YieldWatch JSON payload file.
+Copy or rename `config.sample.yml` to `config.yml`:
 
-    $ ./yield -h
+    mv config{.sample,}.yml
 
-    Usage: yield.rb [options]
-        -w, --wallet=ADDRESS             Wallet address
-        -f, --file=PATH                  Path to the YieldWatch JSON payload file
+### Configurations
+
+#### YieldWatch
+
+| Option | Description |
+| ------ | ----------- |
+| wallet | BSC wallet address
+| file   | relative path to the YieldWatch JSON payload file
 
 Please note that if you are using the wallet address, the wallet balances will be missing from the calculation.
 

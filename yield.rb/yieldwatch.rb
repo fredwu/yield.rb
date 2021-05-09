@@ -5,10 +5,10 @@ class YieldWatch
 
   attr_accessor :json
 
-  def initialize(wallet: nil, file: nil)
-    json = if file
+  def initialize(options = {})
+    json = if file = options["file"]
       File.read(file)
-    elsif wallet
+    elsif wallet = options["wallet"]
       open("#{URI}#{wallet}#{URI_ARGS}") do |f|
         f.read
       end
