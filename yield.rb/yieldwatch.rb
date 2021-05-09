@@ -59,7 +59,7 @@ class YieldWatch
   end
 
   def parse_pool(pool)
-    return if pool["depositToken"] =~ /^acs/
+    return if pool["depositToken"] =~ /^acs/ # "acs" tokens are pending rewards
 
     {
       token_name(pool["depositToken"]) => pool["depositedTokens"].round(rounding)

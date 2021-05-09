@@ -1,6 +1,6 @@
 # yield.rb
 
-This is a simple ruby script that pulls data from [YieldWatch](https://www.yieldwatch.net/) and reconstructs them for one purpose: to get the aggregated amounts of underlying tokens.
+This is a simple ruby script that pulls data from [YieldWatch](https://www.yieldwatch.net/) and [Binance](https://www.binance.com/), and reconstructs them for one purpose: to get the aggregated amounts of underlying tokens.
 
 ## Why?
 
@@ -21,6 +21,16 @@ Copy or rename `config.sample.yml` to `config.yml`:
     mv config{.sample,}.yml
 
 ### Configurations
+
+#### Binance
+
+| Option     | Description
+| ---------- | -----------
+| api_key    | API key
+| secret_key | Secret key
+| file       | relative path to the Binance JSON payload file (`Daily Account Snapshot (USER_DATA)`)
+
+<sup>The `file` option is only needed if you don't want to supply the API and secret keys.</sup>
 
 #### YieldWatch
 

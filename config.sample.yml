@@ -1,3 +1,9 @@
+binance:
+  api_key:
+  secret_key:
+  file:
 yieldwatch:
   wallet:
   file:
+settings:
+  rounding: 4
