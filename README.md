@@ -1,6 +1,6 @@
 # yield.rb
 
-This is a simple ruby script that pulls data from [YieldWatch](https://www.yieldwatch.net/) and [Binance](https://www.binance.com/), and reconstructs them for one purpose: to get the aggregated amounts of underlying tokens.
+This is a simple ruby script that pulls data from [YieldWatch](https://www.yieldwatch.net/) and [Binance](https://www.binance.com/), and reconstructs them for one purpose: to get the aggregated amounts and values of underlying tokens.
 
 ## Why?
 
