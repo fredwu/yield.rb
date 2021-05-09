@@ -63,6 +63,7 @@ Copy or rename `config.sample.yml` to `config.yml`:
 1. Only tokens that have already been deposited into the vaults will be counted, those that are pending are ignored.
 1. Coin names on different protocols are consolidated into one, e.g. `WBNB`, `iBNB` and `beltBNB` are all consolidated into `BNB`.
 1. Only the farms and tokens I personally use have been tested.
+1. Token prices are fetched from [CoinGecko](https://www.coingecko.com/).
 
 ## Supported Exchanges
 
