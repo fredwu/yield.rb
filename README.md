@@ -88,6 +88,10 @@ These are the BSC (Binance Smart Chain) wallet trackers I have come across.
 - [tin.](https://tin.network/)
 - [YieldWatch](https://www.yieldwatch.net/)
 
+## Todo
+
+- [ ] Add support for [Bittrex](https://bittrex.com)
+
 ## License
 
 Licensed under [MIT](http://fredwu.mit-license.org/).
