@@ -6,19 +6,19 @@ class CoinGecko
   attr_accessor :list
   attr_accessor :coins
 
-  def initialize(settings)
+  def initialize(settings = {})
     @settings = settings
     @coins    = {}
   end
 
   def fetch!(names)
-    @list  = JSON.parse(http_get(LIST_URI))
+    @list  = JSON.parse(Utils.http_get(LIST_URI))
     ids    = names.map { |n| detect_token_id(n) }
     @coins = settings["currencies"].map do |c|
       [
         c,
         JSON.parse(
-          http_get("#{COIN_URI}&vs_currency=#{c}&ids=#{ids.join(',')}")
+          Utils.http_get("#{COIN_URI}&vs_currency=#{c}&ids=#{ids.join(',')}")
         )
       ]
     end.to_h
@@ -63,15 +63,5 @@ class CoinGecko
     else
       names.first["id"]
     end
-  end
-
-  def http_get(uri)
-    uri          = URI(uri)
-    req          = Net::HTTP::Get.new(uri)
-    http         = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    res          = http.request(req)
-
-    res.body
   end
 end

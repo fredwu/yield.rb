@@ -9,6 +9,7 @@ require "json"
 require "open-uri"
 require "net/http"
 
+require_relative "./yield.rb/utils.rb"
 require_relative "./yield.rb/binance.rb"
 require_relative "./yield.rb/coingecko.rb"
 require_relative "./yield.rb/manual.rb"
