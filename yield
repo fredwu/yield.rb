@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+# Author: Fred Wu
+# Source code: https://github.com/fredwu/yield.rb
+# License: http://fredwu.mit-license.org/
+
+require "json"
+require "open-uri"
+require 'optparse'
+
+require_relative "./yield.rb/yieldwatch.rb"
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: yield.rb [options]"
+
+  opts.on("-w ADDRESS", "--wallet=ADDRESS", "Wallet address") do |w|
+    options[:wallet] = w
+  end
+
+  opts.on("-f PATH", "--file=PATH", "Path to the YieldWatch JSON payload file") do |f|
+    options[:file] = f
+  end
+end.parse!
+
+YieldWatch.new(options).output

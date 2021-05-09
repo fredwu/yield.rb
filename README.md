@@ -16,7 +16,7 @@ Here's what the output data looks like:
 
 Pass in either the wallet address or the path to the YieldWatch JSON payload file.
 
-    $ ./yield.rb -h
+    $ ./yield -h
 
     Usage: yield.rb [options]
         -w, --wallet=ADDRESS             Wallet address
