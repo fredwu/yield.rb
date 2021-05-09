@@ -9,3 +9,5 @@ settings:
   rounding: 4
   hide_tokens:
     - DOGE
+  include_tokens:
+    USD: 42

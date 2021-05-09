@@ -9,6 +9,7 @@ require "json"
 require "open-uri"
 
 require_relative "./yield.rb/binance.rb"
+require_relative "./yield.rb/manual.rb"
 require_relative "./yield.rb/yieldwatch.rb"
 
 options = YAML.load_file("./config.yml")
@@ -24,6 +25,7 @@ class Yield
 end
 
 data = [
+  Thread.new { Manual.new(options["settings"]).parse },
   Thread.new { Binance.new(options["settings"].merge(options["binance"])).parse },
   Thread.new { YieldWatch.new(options["settings"].merge(options["yieldwatch"])).parse },
 ].map(&:value)

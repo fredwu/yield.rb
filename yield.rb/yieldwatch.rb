@@ -19,7 +19,7 @@ class YieldWatch
   end
 
   def parse
-    @json["result"].flat_map do |_name, farm|
+    json["result"].map do |_name, farm|
       farm.flat_map do |type, stake|
         case type
         when "balances"

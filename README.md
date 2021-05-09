@@ -22,12 +22,15 @@ Copy or rename `config.sample.yml` to `config.yml`:
 
 ### Configurations
 
-| Option      | Type          | Description
-| ----------- | ------------- | -----------
-| rounding    | integer       | decimal rounding, defaults to 4
-| hide_tokens | array(string) | tokens that should be hidden from output
+| Option         | Type          | Description
+| -------------- | ------------- | -----------
+| rounding       | integer       | decimal rounding, defaults to 4
+| hide_tokens    | array(string) | tokens that should be hidden from output
+| include_tokens | string: float | manually add tokens and their amounts
 
 <sup>The `hide_tokens` option is useful for hiding dusts and/or tokens you don't care about.</sup>
+
+<sup>The `include_tokens` option is useful for adding tokens from places without APIs, such as [Nexo](https://nexo.io/).</sup>
 
 #### Binance
 
