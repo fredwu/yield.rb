@@ -48,7 +48,11 @@ Copy or rename `config.sample.yml` to `config.yml`:
 1. Coin names on different protocols are consolidated into one, e.g. `WBNB`, `iBNB` and `beltBNB` are all consolidated into `BNB`.
 1. Only the farms and tokens I personally use have been tested.
 
-## Tested Farms
+## Supported Exchanges
+
+- [Binance](https://www.binance.com/)
+
+## Tested Farms / Yield Aggregators
 
 These are the farms I use and therefore their outputs are tested.
 

@@ -23,7 +23,9 @@ class Yield
   end
 end
 
-Yield.output([
-  Binance.new(options["settings"].merge(options["binance"])).parse,
-  YieldWatch.new(options["settings"].merge(options["yieldwatch"])).parse,
-], options["settings"])
+data = [
+  Thread.new { Binance.new(options["settings"].merge(options["binance"])).parse },
+  Thread.new { YieldWatch.new(options["settings"].merge(options["yieldwatch"])).parse },
+].map(&:value)
+
+Yield.output(data, options["settings"])
