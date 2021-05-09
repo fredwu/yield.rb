@@ -57,10 +57,12 @@ class YieldWatch
   end
 
   def parse_pool(pool)
-    return if pool["depositToken"] =~ /^acs/ # "acs" tokens are pending rewards
+    return if pool["depositToken"] =~ /^acs\w+/ # "acs" tokens are pending rewards
+
+    amount = pool["currentTokens"] || pool["depositedTokens"]
 
     {
-      token_name(pool["depositToken"]) => pool["depositedTokens"]
+      token_name(pool["depositToken"]) => amount
     }
   end
 
