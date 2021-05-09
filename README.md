@@ -19,9 +19,9 @@ Here's what the output data looks like:
 
 ## Usage
 
-Copy or rename `config.sample.yml` to `config.yml`:
+Copy `config.sample.yml` to `config.yml`:
 
-    mv config{.sample,}.yml
+    cp config{.sample,}.yml
 
 ### Configurations
 
