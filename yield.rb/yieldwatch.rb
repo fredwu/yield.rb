@@ -3,7 +3,6 @@ class YieldWatch
   URI_ARGS = "?platforms=beefy,pancake,hyperjump,blizzard,bdollar,jetfuel,auto,bunny,acryptos,mdex,alpha,venus,cream"
 
   attr_accessor :json
-  attr_accessor :rounding
 
   def initialize(options = {})
     json = if file = options["file"]
@@ -15,7 +14,6 @@ class YieldWatch
     end
 
     @json = JSON.parse(json)
-    @rounding = options["rounding"]
   end
 
   def parse
@@ -35,7 +33,7 @@ class YieldWatch
 
   def parse_wallet(balances)
     balances.map do |balance|
-      { balance["symbol"] => balance["balance"].round(rounding) }
+      { balance["symbol"] => balance["balance"] }
     end
   end
 
@@ -53,8 +51,8 @@ class YieldWatch
 
   def parse_lp(lp)
     {
-      token_name(lp["symbolToken0"]) => lp["currentToken0"].round(rounding),
-      token_name(lp["symbolToken1"]) => lp["currentToken1"].round(rounding)
+      token_name(lp["symbolToken0"]) => lp["currentToken0"],
+      token_name(lp["symbolToken1"]) => lp["currentToken1"]
     }
   end
 
@@ -62,7 +60,7 @@ class YieldWatch
     return if pool["depositToken"] =~ /^acs/ # "acs" tokens are pending rewards
 
     {
-      token_name(pool["depositToken"]) => pool["depositedTokens"].round(rounding)
+      token_name(pool["depositToken"]) => pool["depositedTokens"]
     }
   end
 

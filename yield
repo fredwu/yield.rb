@@ -7,22 +7,15 @@
 require "yaml"
 require "json"
 require "open-uri"
+require "net/http"
 
 require_relative "./yield.rb/binance.rb"
+require_relative "./yield.rb/coingecko.rb"
 require_relative "./yield.rb/manual.rb"
+require_relative "./yield.rb/yield.rb"
 require_relative "./yield.rb/yieldwatch.rb"
 
 options = YAML.load_file("./config.yml")
-
-class Yield
-  def self.output(data, settings)
-    hash = Hash[data.flatten.inject do |result, tokens|
-      result.merge(tokens) { |_, n1, n2| (n1 + n2).round(settings["rounding"]) }
-    end.reject{ |k, v| settings["hide_tokens"].include?(k) }.sort]
-
-    hash.each { |k, v| puts "#{k}\t#{v}" }
-  end
-end
 
 data = [
   Thread.new { Manual.new(options["settings"]).parse },
@@ -30,4 +23,4 @@ data = [
   Thread.new { YieldWatch.new(options["settings"].merge(options["yieldwatch"])).parse },
 ].map(&:value)
 
-Yield.output(data, options["settings"])
+Yield.new(data, options["settings"]).output()

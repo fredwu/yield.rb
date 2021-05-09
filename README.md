@@ -10,9 +10,12 @@ Some other wallet trackers support this, but none of them supports all the yield
 
 Here's what the output data looks like:
 
-    BNB   6.9420
-    BTC   0.6969
-    ETH   4.2000
+    BNB   6.9420     USD 1.23     AUD 2.34
+    BTC   0.6969     USD 12.34    AUD 23.45
+    ETH   4.2000     USD 3.45     AUD 5.67
+
+    Total USD: 17.02
+    Total AUD: 31.46
 
 ## Usage
 
@@ -22,15 +25,18 @@ Copy or rename `config.sample.yml` to `config.yml`:
 
 ### Configurations
 
-| Option         | Type          | Description
-| -------------- | ------------- | -----------
-| rounding       | integer       | decimal rounding, defaults to 6
-| hide_tokens    | array(string) | tokens that should be hidden from output
-| include_tokens | string: float | manually add tokens and their amounts
+| Option         | Type           | Description
+| -------------- | -------------- | -----------
+| rounding       | integer        | decimal rounding, defaults to 6
+| token_names    | string: string | token name mapping
+| hide_tokens    | array(string)  | tokens that should be hidden from output
+| include_tokens | string: float  | manually add tokens and their amounts
 
-<sup>The `hide_tokens` option is useful for hiding dusts and/or tokens you don't care about.</sup>
+- <sup>In some cases token symbols are not unique (e.g. `BUNNY` can be `Pancake Bunny`, `BunnyToken` or `Rocket Bunny`), in this case they need to be added to the `token_names` mapping. Search [CoinGecko](https://www.coingecko.com/) for their names.</sup>
 
-<sup>The `include_tokens` option is useful for adding tokens from places without APIs, such as [Nexo](https://nexo.io/).</sup>
+- <sup>The `hide_tokens` option is useful for hiding dusts and/or tokens you don't care about.</sup>
+
+- <sup>The `include_tokens` option is useful for adding tokens from places without APIs, such as [Nexo](https://nexo.io/).</sup>
 
 #### Binance
 
@@ -40,7 +46,7 @@ Copy or rename `config.sample.yml` to `config.yml`:
 | secret_key | string        | Secret key
 | file       | string        | relative path to the Binance JSON payload file (`Daily Account Snapshot (USER_DATA)`)
 
-<sup>The `file` option is only needed if you don't want to supply the API and secret keys.</sup>
+- <sup>The `file` option is only needed if you don't want to supply the API and secret keys.</sup>
 
 #### YieldWatch
 
@@ -49,7 +55,7 @@ Copy or rename `config.sample.yml` to `config.yml`:
 | wallet | string        | BSC wallet address
 | file   | string        | relative path to the YieldWatch JSON payload file
 
-<sup>Please note that if you are using the wallet address, the wallet balances will be missing from the calculation. To include the wallet balances, go to YieldWatch, fetch your wallet, and open the browser console to copy the JSON payload.</sup>
+- <sup>Please note that if you are using the wallet address, the wallet balances will be missing from the calculation. To include the wallet balances, go to YieldWatch, fetch your wallet, and open the browser console to copy the JSON payload.</sup>
 
 ## Assumptions
 

@@ -1,11 +1,9 @@
-require "net/http"
 require "openssl"
 
 class Binance
   URI = "https://api.binance.com/sapi/v1/accountSnapshot"
 
   attr_accessor :json
-  attr_accessor :rounding
 
   def initialize(options = {})
     json = if file = options["file"]
@@ -15,7 +13,6 @@ class Binance
     end
 
     @json = JSON.parse(json)
-    @rounding = options["rounding"]
   end
 
   def parse
@@ -23,7 +20,7 @@ class Binance
     json["snapshotVos"][-2]["data"]["balances"].reject do |balance|
       balance["free"] == "0"
     end.map do |balance|
-      { token_name(balance["asset"]) => balance["free"].to_f.round(rounding) }
+      { token_name(balance["asset"]) => balance["free"].to_f }
     end
   end
 

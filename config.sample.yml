@@ -6,7 +6,11 @@ yieldwatch:
   wallet:
   file:
 settings:
+  currencies:
+    - USD
   rounding: 6
+  token_names:
+    BUNNY: Pancake Bunny
   hide_tokens:
     - DOGE
   include_tokens:
