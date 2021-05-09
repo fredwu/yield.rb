@@ -14,4 +14,4 @@ settings:
   hide_tokens:
     - DOGE
   include_tokens:
-    USD: 42
+    NEXO: 42
