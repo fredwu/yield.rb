@@ -1,6 +1,6 @@
 # yield.rb
 
-This is a simple ruby script that pulls data from [YieldWatch](https://www.yieldwatch.net/) and [Binance](https://www.binance.com/), and reconstructs them for one purpose: to get the aggregated amounts and values of underlying tokens.
+This is a simple ruby script that pulls data from [YieldWatch](https://www.yieldwatch.net/) and supported exchanges, and reconstructs them for one purpose: to get the aggregated amounts and values of underlying tokens.
 
 ## Why?
 
@@ -68,6 +68,7 @@ Copy `config.sample.yml` to `config.yml`:
 ## Supported Exchanges
 
 - [Binance](https://www.binance.com/)
+- [Bittrex](https://bittrex.com/)
 
 ## Tested Farms / Yield Aggregators
 
@@ -88,10 +89,6 @@ These are the BSC (Binance Smart Chain) wallet trackers I have come across.
 - [SCV](https://scv.finance/)
 - [tin.](https://tin.network/)
 - [YieldWatch](https://www.yieldwatch.net/)
-
-## Todo
-
-- [ ] Add support for [Bittrex](https://bittrex.com)
 
 ## License
 

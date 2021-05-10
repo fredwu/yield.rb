@@ -1,23 +1,8 @@
-require "openssl"
-
-class Binance
+class Binance < Exchange
   URI = "https://api.binance.com/sapi/v1/accountSnapshot"
 
-  attr_accessor :json
-
-  def initialize(options = {})
-    json = if file = options["file"]
-      File.read(file)
-    elsif (api_key, secret_key = options["api_key"], options["secret_key"])
-      get_from_api(api_key, secret_key)
-    end
-
-    @json = JSON.parse(json)
-  end
-
   def parse
-    # uses yesterday's snapshot, as the latest snapshot sometimes misses certain tokens
-    json["snapshotVos"][-2]["data"]["balances"].reject do |balance|
+    data["snapshotVos"].last["data"]["balances"].reject do |balance|
       balance["free"] == "0"
     end.map do |balance|
       { token_name(balance["asset"]) => balance["free"].to_f }
@@ -27,16 +12,18 @@ class Binance
   private
 
   def get_from_api(api_key, secret_key)
-    timestamp           = Time.now.to_i * 1000
-    params              = "type=SPOT&timestamp=#{timestamp}"
-    signature           = OpenSSL::HMAC.hexdigest("sha256", secret_key, params)
-    params              = "#{params}&signature=#{signature}"
-    uri                 = URI("#{URI}?#{params}")
-    req                 = Net::HTTP::Get.new(uri)
-    req["X-MBX-APIKEY"] = api_key
-    http                = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl        = true
-    res                 = http.request(req)
+    timestamp = Time.now.to_i * 1000
+    params    = "type=SPOT&timestamp=#{timestamp}"
+    signature = OpenSSL::HMAC.hexdigest("sha256", secret_key, params)
+    params    = "#{params}&signature=#{signature}"
+    uri       = URI("#{URI}?#{params}")
+
+    res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+      req                 = Net::HTTP::Get.new(uri)
+      req["X-MBX-APIKEY"] = api_key
+
+      http.request(req)
+    end
 
     res.body
   end

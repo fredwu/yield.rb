@@ -6,11 +6,14 @@
 
 require "yaml"
 require "json"
+require "openssl"
 require "open-uri"
 require "net/http"
 
 require_relative "./yield.rb/utils.rb"
+require_relative "./yield.rb/exchange.rb"
 require_relative "./yield.rb/binance.rb"
+require_relative "./yield.rb/bittrex.rb"
 require_relative "./yield.rb/coingecko.rb"
 require_relative "./yield.rb/manual.rb"
 require_relative "./yield.rb/yield.rb"
@@ -21,6 +24,7 @@ options = YAML.load_file("./config.yml")
 data = [
   Thread.new { Manual.new(options["settings"]).parse },
   Thread.new { Binance.new(options["settings"].merge(options["binance"])).parse },
+  Thread.new { Bittrex.new(options["settings"].merge(options["bittrex"])).parse },
   Thread.new { YieldWatch.new(options["settings"].merge(options["yieldwatch"])).parse },
 ].map(&:value)
 

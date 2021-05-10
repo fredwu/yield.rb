@@ -2,6 +2,9 @@ binance:
   api_key:
   secret_key:
   file:
+bittrex:
+  api_key:
+  secret_key:
 yieldwatch:
   wallet:
   file:

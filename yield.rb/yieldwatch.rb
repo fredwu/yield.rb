@@ -2,7 +2,7 @@ class YieldWatch
   URI      = "https://www.yieldwatch.net/api/all/"
   URI_ARGS = "?platforms=beefy,pancake,hyperjump,blizzard,bdollar,jetfuel,auto,bunny,acryptos,mdex,alpha,venus,cream"
 
-  attr_accessor :json
+  attr_accessor :data
 
   def initialize(options = {})
     json = if file = options["file"]
@@ -13,11 +13,11 @@ class YieldWatch
       end
     end
 
-    @json = JSON.parse(json)
+    @data = JSON.parse(json)
   end
 
   def parse
-    json["result"].map do |_name, farm|
+    data["result"].map do |_name, farm|
       farm.flat_map do |type, stake|
         case type
         when "balances"
