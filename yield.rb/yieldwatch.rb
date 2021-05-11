@@ -14,6 +14,12 @@ class YieldWatch
     end
 
     @data = JSON.parse(json)
+
+    if @data["error"]
+      puts "Error from YieldWatch:"
+      puts @data["error"]
+      exit
+    end
   end
 
   def parse
