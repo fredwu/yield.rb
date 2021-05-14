@@ -3,7 +3,7 @@ class Binance < Exchange
 
   def parse
     data["snapshotVos"].last["data"]["balances"].reject do |balance|
-      balance["free"] == "0"
+      balance["asset"] =~ /\w+UP$/ || balance["free"] == "0"
     end.map do |balance|
       { token_name(balance["asset"]) => balance["free"].to_f }
     end
