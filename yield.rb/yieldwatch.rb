@@ -1,5 +1,5 @@
 class YieldWatch
-  URI      = "https://www.yieldwatch.net/api/all/"
+  API_URI  = "https://www.yieldwatch.net/api/all/"
   URI_ARGS = "?platforms=beefy,pancake,hyperjump,blizzard,bdollar,jetfuel,auto,bunny,acryptos,mdex,alpha,venus,cream"
 
   attr_accessor :data
@@ -8,7 +8,7 @@ class YieldWatch
     json = if file = options["file"]
       File.read(file)
     elsif wallet = options["wallet"]
-      open("#{URI}#{wallet}#{URI_ARGS}") do |f|
+      URI.open("#{API_URI}#{wallet}#{URI_ARGS}") do |f|
         f.read
       end
     end

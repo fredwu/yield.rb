@@ -1,5 +1,5 @@
 class Bittrex < Exchange
-  URI = "https://api.bittrex.com/v3/balances"
+  API_URI = "https://api.bittrex.com/v3/balances"
 
   def parse
     data.reject do |balance|
@@ -12,7 +12,7 @@ class Bittrex < Exchange
   private
 
   def get_from_api(api_key, secret_key)
-    uri = URI(URI)
+    uri = URI(API_URI)
     res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
       req                     = Net::HTTP::Get.new(uri)
       req["Api-Key"]          = api_key
@@ -23,7 +23,7 @@ class Bittrex < Exchange
                                   secret_key,
                                   [
                                     req["Api-Timestamp"],
-                                    URI,
+                                    API_URI,
                                     "GET",
                                     req["Api-Content-Hash"]
                                   ].join("")

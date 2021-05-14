@@ -1,5 +1,5 @@
 class Binance < Exchange
-  URI = "https://api.binance.com/sapi/v1/accountSnapshot"
+  API_URI = "https://api.binance.com/sapi/v1/accountSnapshot"
 
   def parse
     data["snapshotVos"].last["data"]["balances"].reject do |balance|
@@ -16,7 +16,7 @@ class Binance < Exchange
     params    = "type=SPOT&timestamp=#{timestamp}"
     signature = OpenSSL::HMAC.hexdigest("sha256", secret_key, params)
     params    = "#{params}&signature=#{signature}"
-    uri       = URI("#{URI}?#{params}")
+    uri       = URI("#{API_URI}?#{params}")
 
     res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
       req                 = Net::HTTP::Get.new(uri)

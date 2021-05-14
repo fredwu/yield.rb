@@ -7,8 +7,8 @@
 require "yaml"
 require "json"
 require "openssl"
-require "open-uri"
 require "net/http"
+require "open-uri"
 
 require_relative "./yield.rb/utils.rb"
 require_relative "./yield.rb/exchange.rb"
