@@ -1,10 +1,8 @@
 class Binance < Exchange
-  # uses the Binance account snapshot API as the account API does not include
-  # data on the locked staking positions
-  API_URI = "https://api.binance.com/sapi/v1/accountSnapshot"
+  API_URI = "https://api.binance.com/api/v3/account"
 
   def parse
-    data["snapshotVos"].last["data"]["balances"].reject do |balance|
+    data["balances"].reject do |balance|
       balance["asset"] =~ /\w+(UP|DOWN)$/ || balance["free"].to_f == 0
     end.map do |balance|
       { token_name(balance["asset"]) => balance["free"].to_f }
@@ -15,7 +13,7 @@ class Binance < Exchange
 
   def get_from_api(api_key, secret_key)
     timestamp = Time.now.to_i * 1000
-    params    = "type=SPOT&timestamp=#{timestamp}"
+    params    = "timestamp=#{timestamp}"
     signature = OpenSSL::HMAC.hexdigest("sha256", secret_key, params)
     params    = "#{params}&signature=#{signature}"
     uri       = URI("#{API_URI}?#{params}")
