@@ -7,6 +7,7 @@ bittrex:
   secret_key:
 yieldwatch:
   wallet:
+  jwt:
   file:
 settings:
   currencies:

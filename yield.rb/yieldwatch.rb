@@ -8,9 +8,15 @@ class YieldWatch
     json = if file = options["file"]
       File.read(file)
     elsif wallet = options["wallet"]
-      URI.open("#{API_URI}#{wallet}#{URI_ARGS}") do |f|
-        f.read
+      uri = URI("#{API_URI}#{wallet}#{URI_ARGS}")
+      res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+        req = Net::HTTP::Get.new(uri)
+        req["Authorization"] = "Bearer #{options["jwt"]}"
+
+        http.request(req)
       end
+
+      res.body
     end
 
     @data = JSON.parse(json)

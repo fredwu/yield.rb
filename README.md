@@ -53,9 +53,12 @@ Copy `config.sample.yml` to `config.yml`:
 | Option | Type          | Description
 | ------ | ------------- | -----------
 | wallet | string        | BSC wallet address
+| jwt    | string        | YieldWatch JWT
 | file   | string        | relative path to the YieldWatch JSON payload file
 
 - <sup>Please note that if you are using the wallet address, the wallet balances will be missing from the calculation. To include the wallet balances, go to YieldWatch, fetch your wallet, and open the browser console to copy the JSON payload.</sup>
+
+- <sup>Alternatively, find the YieldWatch GET request and copy the JWT (the string after "Authorization: Bearer ") in the header.</sup>
 
 ## Assumptions
 
