@@ -10,6 +10,12 @@ class Yield
   end
 
   def output
+    settings["currencies"] ? output_with_pricing : output_without_pricing
+  end
+
+  private
+
+  def output_with_pricing
     totals = {}
 
     amounts_with_pricing.each do |name, v|
@@ -31,7 +37,12 @@ class Yield
     end
   end
 
-  private
+  def output_without_pricing
+    merged_amounts.each do |name, amount|
+      amount = amount.round(settings["rounding"])
+      puts "#{name}\t#{amount}"
+    end
+  end
 
   def amounts_with_pricing
     prices = CoinGecko.new(settings)
