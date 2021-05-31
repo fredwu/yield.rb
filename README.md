@@ -36,7 +36,7 @@ Copy `config.sample.yml` to `config.yml`:
 
 - <sup>The `hide_tokens` option is useful for hiding dusts and/or tokens you don't care about.</sup>
 
-- <sup>The `include_tokens` option is useful for adding tokens from places without APIs, such as [Nexo](https://nexo.io/).</sup>
+- <sup>The `include_tokens` option is useful for adding tokens from places without APIs, such as [Nexo](https://nexo.io/). Tokens are categorised under groups (exchanges or farms, etc).</sup>
 
 #### Binance
 
