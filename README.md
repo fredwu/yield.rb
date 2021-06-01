@@ -87,6 +87,7 @@ These are the farms I use and therefore their outputs are tested.
 
 These are the BSC (Binance Smart Chain) wallet trackers I have come across.
 
+- [ApeBoard](https://apeboard.finance/)
 - [DeBank](https://debank.com/)
 - [Farm.Army](https://farm.army/)
 - [Farmfol.io](https://farmfol.io/)
