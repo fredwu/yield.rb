@@ -79,7 +79,9 @@ These are the farms I use and therefore their outputs are tested.
 
 - [ACryptoS](https://acryptos.com/)
 - [AutoFarm](https://autofarm.network/)
+- [Beefy](https://beefy.finance/)
 - [PancakeBunny](https://pancakebunny.finance/)
+- [PancakeSwap](https://pancakeswap.finance/)
 
 ## Wallet Trackers
 
