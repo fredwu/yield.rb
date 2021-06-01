@@ -38,23 +38,23 @@ Copy `config.sample.yml` to `config.yml`:
 
 - <sup>The `include_tokens` option is useful for adding tokens from places without APIs, such as [Nexo](https://nexo.io/). Tokens are categorised under groups (exchanges or farms, etc).</sup>
 
-#### Binance
+#### Binance & Bittrex
 
-| Option     | Type          | Description
-| ---------- | ------------- | -----------
-| api_key    | string        | API key
-| secret_key | string        | Secret key
-| file       | string        | relative path to the Binance JSON payload file (`Daily Account Snapshot (USER_DATA)`)
+| Option     | Type   | Description
+| ---------- | ------ | -----------
+| api_key    | string | API key
+| secret_key | string | Secret key
+| file       | string | relative path to the JSON payload file from the API
 
 - <sup>The `file` option is only needed if you don't want to supply the API and secret keys.</sup>
 
 #### YieldWatch
 
-| Option | Type          | Description
-| ------ | ------------- | -----------
-| wallet | string        | BSC wallet address
-| jwt    | string        | YieldWatch JWT
-| file   | string        | relative path to the YieldWatch JSON payload file
+| Option | Type   | Description
+| ------ | ------ | -----------
+| wallet | string | BSC wallet address
+| jwt    | string | YieldWatch JWT
+| file   | string | relative path to the YieldWatch JSON payload file
 
 - <sup>Please note that if you are using the wallet address, the wallet balances will be missing from the calculation. To include the wallet balances, go to YieldWatch, fetch your wallet, and open the browser console to copy the JSON payload.</sup>
 
