@@ -1,6 +1,6 @@
 # yield.rb
 
-This is a simple ruby script that pulls data from [YieldWatch](https://www.yieldwatch.net/) and supported exchanges, and reconstructs them for one purpose: to get the aggregated amounts and values of underlying tokens.
+This is a simple ruby script that pulls data from [YieldWatch](https://www.yieldwatch.net/), [ApeBoard](https://apeboard.finance/) and supported exchanges, and reconstructs them for one purpose: to get the aggregated amounts and values of underlying tokens.
 
 ## Why?
 
@@ -38,15 +38,15 @@ Copy `config.sample.yml` to `config.yml`:
 
 - <sup>The `include_tokens` option is useful for adding tokens from places without APIs, such as [Nexo](https://nexo.io/). Tokens are categorised under groups (exchanges or farms, etc).</sup>
 
-#### Binance & Bittrex
+#### ApeBoard
 
-| Option     | Type   | Description
-| ---------- | ------ | -----------
-| api_key    | string | API key
-| secret_key | string | Secret key
-| file       | string | relative path to the JSON payload file from the API
+| Option  | Type          | Description
+| ------- | ------------- | -----------
+| wallet  | string        | BSC wallet address
+| wallets | array(string) | wallets, e.g. `eth`, `bsc` and `matic`, etc
+| farms   | array(string) | farms, e.g. `pancakeswapBsc` and `polycat`, etc
 
-- <sup>The `file` option is only needed if you don't want to supply the API and secret keys.</sup>
+- <sup>Visit [ApeBoard](https://apeboard.finance/) and take a look at the GET requests to find all the supported wallets and farms.</sup>
 
 #### YieldWatch
 
@@ -59,6 +59,16 @@ Copy `config.sample.yml` to `config.yml`:
 - <sup>Please note that if you are using the wallet address, the wallet balances will be missing from the calculation. To include the wallet balances, go to YieldWatch, fetch your wallet, and open the browser console to copy the JSON payload.</sup>
 
 - <sup>Alternatively, find the YieldWatch GET request and copy the JWT (the string after "Authorization: Bearer ") in the header.</sup>
+
+#### Binance & Bittrex
+
+| Option     | Type   | Description
+| ---------- | ------ | -----------
+| api_key    | string | API key
+| secret_key | string | Secret key
+| file       | string | relative path to the JSON payload file from the API
+
+- <sup>The `file` option is only needed if you don't want to supply the API and secret keys.</sup>
 
 ## Assumptions
 

@@ -9,6 +9,13 @@ yieldwatch:
   wallet:
   jwt:
   file:
+apeboard:
+  wallet:
+  wallets:
+    - bsc
+    - matic
+  farms:
+    - pancakeswapBsc
 settings:
   currencies:
     - USD

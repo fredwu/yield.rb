@@ -19,7 +19,7 @@ class Yield
     totals = {}
 
     amounts_with_pricing.each do |name, v|
-      amount = v[:amount].round(settings["rounding"])
+      amount = Utils.round(v[:amount], settings["rounding"])
       value  = v[:values].map { |k, v| "#{k} #{v.round(CURRENCY_ROUNDING)}" }.join("\t")
 
       puts "#{name}\t#{amount}\s\t#{value}"
@@ -39,7 +39,7 @@ class Yield
 
   def output_without_pricing
     merged_amounts.each do |name, amount|
-      amount = amount.round(settings["rounding"])
+      amount = Utils.round(amount, settings["rounding"])
       puts "#{name}\t#{amount}"
     end
   end

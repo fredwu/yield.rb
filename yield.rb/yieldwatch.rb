@@ -63,8 +63,8 @@ class YieldWatch
 
   def parse_lp(lp)
     {
-      token_name(lp["symbolToken0"]) => lp["currentToken0"],
-      token_name(lp["symbolToken1"]) => lp["currentToken1"]
+      Utils.token_name(lp["symbolToken0"]) => lp["currentToken0"],
+      Utils.token_name(lp["symbolToken1"]) => lp["currentToken1"]
     }
   end
 
@@ -73,19 +73,6 @@ class YieldWatch
 
     amount = pool["currentTokens"] || pool["depositedTokens"]
 
-    { token_name(pool["depositToken"]) => amount }
-  end
-
-  def token_name(name)
-    case name
-    when "WBNB", "iBNB", "beltBNB"
-      "BNB"
-    when "beltBTC", "BTCB"
-      "BTC"
-    when "beltETH"
-      "ETH"
-    else
-      name
-    end
+    { Utils.token_name(pool["depositToken"]) => amount }
   end
 end
