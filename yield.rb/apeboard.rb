@@ -41,6 +41,14 @@ class ApeBoard
 
   def parse_farm(balances)
     balances.map do |_key, farms|
+      case farms
+      when 500
+        puts "Error fetching from ApeBoard, please try again."
+        exit
+      when 404
+        puts "One or more ApeBoard requests are no longer working, please fix."
+        exit
+      end
       farms.map do |farm|
         farm.map do |key, tokens|
           if key == "tokens"
