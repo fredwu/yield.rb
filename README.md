@@ -8,6 +8,8 @@ In YieldWatch, as much as I love the details it provides on yields, it lacks a c
 
 Some other wallet trackers support this, but none of them supports all the yield farms I use, namely ACryptoS.
 
+As of June 2021, I've personally switched to using ApeBoard as it supports multiple blockchains (I use BSC and Polygon).
+
 Here's what the output data looks like:
 
     BNB   6.9420     USD 1.23     AUD 2.34
@@ -90,8 +92,10 @@ These are the farms I use and therefore their outputs are tested.
 - [ACryptoS](https://acryptos.com/)
 - [AutoFarm](https://autofarm.network/)
 - [Beefy](https://beefy.finance/)
+- [Goose Finance](https://goosedefi.com/)
 - [PancakeBunny](https://pancakebunny.finance/)
 - [PancakeSwap](https://pancakeswap.finance/)
+- [PolyCat](https://polycat.finance/)
 
 ## Wallet Trackers
 
