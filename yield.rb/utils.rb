@@ -27,6 +27,8 @@ module Utils
       "ETH"
     when "WMATIC"
       "MATIC"
+    when "PAUTO"
+      "AUTO"
     when "IRON"
       "USDC"
     else
