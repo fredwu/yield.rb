@@ -90,6 +90,7 @@ Copy `config.sample.yml` to `config.yml`:
 These are the farms I use and therefore their outputs are tested.
 
 - [ACryptoS](https://acryptos.com/)
+- [Adamant](https://adamant.finance/)
 - [AutoFarm](https://autofarm.network/)
 - [Beefy](https://beefy.finance/)
 - [Goose Finance](https://goosedefi.com/)

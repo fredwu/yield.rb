@@ -35,7 +35,7 @@ class ApeBoard
 
   def parse_positions(balances)
     balances.map do |balance|
-      { Utils.token_name(balance["symbol"].upcase) => balance["balance"] }
+      { Utils.token_name(balance["symbol"].upcase) => balance["balance"].to_f }
     end
   end
 
