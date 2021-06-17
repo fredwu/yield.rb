@@ -22,10 +22,10 @@ class ApeBoard
     data.map do |chunk|
       chunk.map do |type, balances|
         case type
-        when "wallet"
-          parse_positions(balances)
-        when "farm"
-          parse_farm(balances)
+        when /^wallet/
+          parse_positions(type, balances)
+        when /^farm/
+          parse_farm(type, balances)
         end
       end
     end
@@ -33,28 +33,31 @@ class ApeBoard
 
   private
 
-  def parse_positions(balances)
+  def parse_positions(_type, balances)
     balances.map do |balance|
       { Utils.token_name(balance["symbol"].upcase) => balance["balance"].to_f }
     end
   end
 
-  def parse_farm(balances)
+  def parse_farm(type, balances)
     balances.map do |_key, farms|
       case farms
       when 500
-        puts "Error fetching from ApeBoard, please try again."
-        exit
+        puts "!!! Error fetching from ApeBoard (#{type}), please try again."
+        []
       when 404
-        puts "One or more ApeBoard requests are no longer working, please fix."
-        exit
-      end
-      farms.map do |farm|
-        farm.map do |key, tokens|
-          if key == "tokens"
-            parse_positions(tokens)
-          end
-        end.compact
+        puts "!!! The ApeBoard request (#{type}) is no longer working, please fix."
+        []
+      when String
+        []
+      else
+        farms.map do |farm|
+          farm.map do |key, tokens|
+            if key == "tokens"
+              parse_positions(type, tokens)
+            end
+          end.compact
+        end
       end
     end
   end
@@ -69,7 +72,7 @@ class ApeBoard
 
     Thread.new do
       {
-        prefix => JSON.parse(
+        "#{prefix} #{name}" => JSON.parse(
           Utils.http_get(
             [API_URI, url_prefix, name, @wallet].reject(&:empty?).join("/")
           )
