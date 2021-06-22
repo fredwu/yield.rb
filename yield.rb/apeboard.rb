@@ -74,7 +74,7 @@ class ApeBoard
       {
         "#{prefix} #{name}" => JSON.parse(
           Utils.http_get(
-            [API_URI, url_prefix, name, @wallet].reject(&:empty?).join("/")
+            [API_URI, url_prefix, name, wallet].reject(&:empty?).join("/")
           )
         )
       }
