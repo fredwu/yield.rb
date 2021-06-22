@@ -1,6 +1,6 @@
 # yield.rb
 
-This is a simple ruby script that pulls data from [YieldWatch](https://www.yieldwatch.net/), [ApeBoard](https://apeboard.finance/) and supported exchanges, and reconstructs them for one purpose: to get the aggregated amounts and values of underlying tokens.
+This is a simple ruby script that pulls data from supported yield trackers and exchanges, and reconstructs them for one purpose: to get the aggregated amounts and values of underlying tokens.
 
 ## Why?
 
@@ -40,11 +40,22 @@ Copy `config.sample.yml` to `config.yml`:
 
 - <sup>The `include_tokens` option is useful for adding tokens from places without APIs, such as [Nexo](https://nexo.io/). Tokens are categorised under groups (exchanges or farms, etc).</sup>
 
+#### 0xTracker
+
+| Option  | Type          | Description
+| ------- | ------------- | -----------
+| wallet  | string        | wallet address
+| farms   | array(string) | farms, e.g. `0xA9C9D9Aed47320835c84090c62dC324FcF24f683`
+
+- <sup>Does not support tracking wallet balances, for that use ApeBoard or YieldWatch.</sup>
+
+- <sup>Visit [0xTracker](https://0xtracker.app/) and take a look at the POST requests to find all the supported farms.</sup>
+
 #### ApeBoard
 
 | Option  | Type          | Description
 | ------- | ------------- | -----------
-| wallet  | string        | BSC wallet address
+| wallet  | string        | wallet address
 | wallets | array(string) | wallets, e.g. `eth`, `bsc` and `matic`, etc
 | farms   | array(string) | farms, e.g. `pancakeswapBsc` and `polycat`, etc
 
@@ -54,7 +65,7 @@ Copy `config.sample.yml` to `config.yml`:
 
 | Option | Type   | Description
 | ------ | ------ | -----------
-| wallet | string | BSC wallet address
+| wallet | string | wallet address
 | jwt    | string | YieldWatch JWT
 | file   | string | relative path to the YieldWatch JSON payload file
 
@@ -67,7 +78,7 @@ Copy `config.sample.yml` to `config.yml`:
 | Option     | Type   | Description
 | ---------- | ------ | -----------
 | api_key    | string | API key
-| secret_key | string | Secret key
+| secret_key | string | secret key
 | file       | string | relative path to the JSON payload file from the API
 
 - <sup>The `file` option is only needed if you don't want to supply the API and secret keys.</sup>
@@ -102,6 +113,7 @@ These are the farms I use and therefore their outputs are tested.
 
 These are the BSC (Binance Smart Chain) wallet trackers I have come across.
 
+- [0xTracker](https://0xtracker.app/)
 - [ApeBoard](https://apeboard.finance/)
 - [DeBank](https://debank.com/)
 - [Farm.Army](https://farm.army/)
