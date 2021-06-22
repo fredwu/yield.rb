@@ -45,11 +45,13 @@ Copy `config.sample.yml` to `config.yml`:
 | Option  | Type          | Description
 | ------- | ------------- | -----------
 | wallet  | string        | wallet address
-| farms   | array(string) | farms, e.g. `0xA9C9D9Aed47320835c84090c62dC324FcF24f683`
+| farms   | array(string) | farms, e.g. `mochiswap.io, bsc`
 
 - <sup>Does not support tracking wallet balances, for that use ApeBoard or YieldWatch.</sup>
 
-- <sup>Visit [0xTracker](https://0xtracker.app/) and take a look at the POST requests to find all the supported farms.</sup>
+- <sup>Visit [0xTracker](https://0xtracker.app/) and take a look at the GET or POST requests to find all the supported farms.</sup>
+
+- <sup>Farm entries are supplied by their name and network, e.g. `mochiswap.io, bsc`.</sup>
 
 #### ApeBoard
 

@@ -19,7 +19,7 @@ apeboard:
 0xtracker:
   wallet:
   farms:
-    - "0xA9C9D9Aed47320835c84090c62dC324FcF24f683"
+    - mochiswap.io, bsc
 settings:
   currencies:
     - USD

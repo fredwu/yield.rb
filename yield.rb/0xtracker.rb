@@ -1,5 +1,6 @@
 class ZeroxTracker
-  API_URI = "https://api.0xtracker.app/pool-data/"
+  API_URI       = "https://api.0xtracker.app/pool-data/"
+  FARM_LIST_URI = "https://api.0xtracker.app/farmlist/"
 
   attr_accessor :data
   attr_accessor :wallet
@@ -7,8 +8,10 @@ class ZeroxTracker
   def initialize(options = {})
     @wallet = options["wallet"]
 
+    farm_list = JSON.parse(Utils.http_get(FARM_LIST_URI))
+
     @data = options["farms"].map do |f|
-      get_payload(f)
+      get_payload(f, farm_list)
     end.map(&:value)
   end
 
@@ -47,14 +50,25 @@ class ZeroxTracker
     ]
   end
 
-  def get_payload(name)
+  def get_payload(name, farm_list)
     Thread.new do
       JSON.parse(
         Utils.http_post(API_URI, {
           "wallet" => wallet,
-          "farms" => [name],
+          "farms" => [farm_address(name, farm_list)],
         })
       )
     end
+  end
+
+  def farm_address(name, farm_list)
+    name, network = name.split(",")
+
+    farm_list.find do |f|
+      f["name"] == name.strip && f["network"] == network.strip
+    end["sendValue"]
+  rescue
+    puts "Farm #{name.strip} (#{network.strip}) cannot be found on 0xTracker."
+    exit
   end
 end
