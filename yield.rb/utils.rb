@@ -27,6 +27,23 @@ module Utils
       res.body
     end
 
+    def binance_http_get(api_uri, api_key, secret_key)
+      timestamp = Time.now.to_i * 1000
+      params = "timestamp=#{timestamp}"
+      signature = OpenSSL::HMAC.hexdigest("sha256", secret_key, params)
+      params = "#{params}&signature=#{signature}"
+      uri = URI("#{api_uri}?#{params}")
+
+      res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+        req = Net::HTTP::Get.new(uri)
+        req["X-MBX-APIKEY"] = api_key
+
+        http.request(req)
+      end
+
+      res.body
+    end
+
     def round(value, rounding_setting)
       BigDecimal(value.to_s).round(rounding_setting).to_s("F")
     end
