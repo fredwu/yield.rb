@@ -8,6 +8,8 @@ module Binance
       end.map do |balance|
         { balance["asset"] => balance["amount"].to_f }
       end
+    rescue
+      []
     end
 
     private
