@@ -37,7 +37,7 @@ class ZeroxTracker
   def parse_wallet(wallet)
     return nil if wallet["tokenPrice"] == 0
 
-    { wallet["symbol"] => wallet["tokenBalance"] }
+    { Utils.token_name(wallet["symbol"]) => wallet["tokenBalance"] }
   end
 
   def parse_farm(farm)

@@ -19,7 +19,10 @@ module Binance
     end
 
     def token_name(name)
-      name.sub(/^LD/, "") # Binance Earn (Flexible Savings, etc)
+      Utils.token_name(
+        # Binance Earn (Flexible Savings, etc)
+        name.sub(/^LD/, "")
+      )
     end
   end
 end

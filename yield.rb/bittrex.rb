@@ -5,7 +5,7 @@ class Bittrex < Exchange
     data.reject do |balance|
       balance["currencySymbol"] == "BTXCRD" || balance["total"].to_f == 0
     end.map do |balance|
-      { balance["currencySymbol"] => balance["total"].to_f }
+      { Utils.token_name(balance["currencySymbol"]) => balance["total"].to_f }
     end
   end
 

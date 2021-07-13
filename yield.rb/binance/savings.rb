@@ -6,7 +6,7 @@ module Binance
       data["positionAmountVos"].reject do |balance|
         balance["amount"].to_f == 0
       end.map do |balance|
-        { balance["asset"] => balance["amount"].to_f }
+        { Utils.token_name(balance["asset"]) => balance["amount"].to_f }
       end
     rescue
       []
