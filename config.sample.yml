@@ -18,6 +18,7 @@ apeboard:
     - pancakeswapBsc
 0xtracker:
   wallet:
+  wallets: false
   farms:
     - mochiswap.io, bsc
 settings:

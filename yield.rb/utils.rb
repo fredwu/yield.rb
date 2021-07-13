@@ -60,7 +60,7 @@ module Utils
         "MATIC"
       when "PAUTO"
         "AUTO"
-      when "IRON"
+      when "IRON", "IS3USD"
         "USDC"
       else
         name

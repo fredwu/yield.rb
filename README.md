@@ -45,6 +45,7 @@ Copy `config.sample.yml` to `config.yml`:
 | Option  | Type          | Description
 | ------- | ------------- | -----------
 | wallet  | string        | wallet address
+| wallets | boolean       | fetch wallet data or not
 | farms   | array(string) | farms, e.g. `mochiswap.io, bsc`
 
 - <sup>Does not support tracking wallet balances, for that use ApeBoard or YieldWatch.</sup>
