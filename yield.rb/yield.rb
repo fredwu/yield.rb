@@ -31,6 +31,7 @@ class Yield
     end
 
     puts "\n"
+    puts "Tokens: #{amounts_with_pricing.count}"
 
     settings["currencies"].each do |c|
       puts "Total #{c}: #{totals[c].round(CURRENCY_ROUNDING)}"
