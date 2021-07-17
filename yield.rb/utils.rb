@@ -49,22 +49,18 @@ module Utils
     end
 
     def token_name(name)
-      case name
-      when "beltBNB", "iBNB", "WBNB"
-        "BNB"
-      when "beltBTC", "BTCB", "WBTC"
-        "BTC"
-      when "beltETH", "WETH"
-        "ETH"
-      when "WMATIC"
-        "MATIC"
-      when "PAUTO"
-        "AUTO"
-      when "IRON", "IS3USD"
-        "USDC"
-      else
-        name
+      mapping ||= begin
+        options = YAML.load_file(File.join(__dir__, "../config.yml"))
+        options["settings"]["token_mappings"].map { |k, v| [v, k] }.to_h
       end
+
+      mapping.each do |names, real_name|
+        if names.include?(name)
+          return real_name
+        end
+      end
+
+      name
     end
   end
 end

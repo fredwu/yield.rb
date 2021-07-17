@@ -27,6 +27,15 @@ settings:
   rounding: 6
   token_names:
     BUNNY: Pancake Bunny
+  token_mappings:
+    BNB:
+      - beltBNB
+      - iBNB
+      - WBNB
+    BTC:
+      - beltBTC
+      - BTCB
+      - WBTC
   hide_tokens:
     - DOGE
   include_tokens:

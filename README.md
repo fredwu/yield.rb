@@ -29,8 +29,10 @@ Copy `config.sample.yml` to `config.yml`:
 
 | Option         | Type           | Description
 | -------------- | -------------- | -----------
+| currencies     | array(string)  | currency ISO codes, e.g. `USD`
 | rounding       | integer        | decimal rounding, defaults to 6
 | token_names    | string: string | token name mapping
+| token_mappings | array(string)  | token code mapping, e.g. to map `BTCB` to `BTC`
 | hide_tokens    | array(string)  | tokens that should be hidden from output
 | include_tokens | string: float  | manually add tokens and their amounts
 
