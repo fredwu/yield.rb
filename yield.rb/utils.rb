@@ -55,6 +55,8 @@ module Utils
       end
 
       mapping.each do |names, real_name|
+        name = name.sub(/^acs(\w+)/, '\1')
+
         if names.include?(name)
           return real_name
         end
