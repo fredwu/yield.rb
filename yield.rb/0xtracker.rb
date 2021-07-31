@@ -53,7 +53,9 @@ class ZeroxTracker
   end
 
   def parse_single(data)
-    { Utils.token_name(data["tokenPair"]) => data["staked"] }
+    balance = data["lpTotal"] || data["staked"]
+
+    { Utils.token_name(data["tokenPair"]) => balance }
   end
 
   def parse_lp(data)
