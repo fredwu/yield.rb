@@ -2,11 +2,15 @@ require 'bigdecimal'
 
 module Utils
   class << self
-    def http_get(uri)
+    def http_get(uri, headers={})
       uri = URI(uri)
       res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
         req = Net::HTTP::Get.new(uri)
         req["Content-Type"] = "application/json"
+
+        headers.each do |key, value|
+          req[key] = value
+        end
 
         http.request(req)
       end
