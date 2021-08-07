@@ -29,6 +29,7 @@ Copy `config.sample.yml` to `config.yml`:
 
 | Option         | Type           | Description
 | -------------- | -------------- | -----------
+| format         | string         | `json` or `text`
 | currencies     | array(string)  | currency ISO codes, e.g. `USD`
 | rounding       | integer        | decimal rounding, defaults to 6
 | token_names    | string: string | token name mapping
