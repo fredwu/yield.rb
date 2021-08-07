@@ -74,7 +74,12 @@ class ApeBoard
       {
         "#{prefix} #{name}" => JSON.parse(
           Utils.http_get(
-            [API_URI, url_prefix, name, wallet].reject(&:empty?).join("/")
+            [API_URI, url_prefix, name, wallet].reject(&:empty?).join("/"),
+            {
+              "origin" => "apeboard.finance",
+              "ape-secret" => "U2FsdGVkX1+cTatAJ47gsc43jtt8TKOCcHtjQ0jLCkIxOe/0zas5drvoaftIOQ7u2YCJ+A3qe3/OE0NuNMCqVXGoigeV8Ddbuwsqp/1F4NdUE3evdLplm5GWHMpOLfbOfw+d1si/XfHRl/31sgJEPg==",
+              "passcode" => "5a102a34f60fa8ec9d643e8a0e72cab9"
+            }
           )
         )
       }
