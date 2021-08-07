@@ -22,6 +22,7 @@ apeboard:
   farms:
     - mochiswap.io, bsc
 settings:
+  format: json
   currencies:
     - USD
   rounding: 6

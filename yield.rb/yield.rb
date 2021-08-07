@@ -10,7 +10,12 @@ class Yield
   end
 
   def output
-    settings["currencies"] ? output_with_pricing : output_without_pricing
+    case settings["format"]
+    when "json"
+      puts JSON.generate(amounts_with_pricing)
+    else
+      settings["currencies"] ? output_with_pricing : output_without_pricing
+    end
   end
 
   private
