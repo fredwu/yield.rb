@@ -59,11 +59,13 @@ Copy `config.sample.yml` to `config.yml`:
 
 #### ApeBoard
 
-| Option  | Type          | Description
-| ------- | ------------- | -----------
-| wallet  | string        | wallet address
-| wallets | array(string) | wallets, e.g. `eth`, `bsc` and `matic`, etc
-| farms   | array(string) | farms, e.g. `pancakeswapBsc` and `polycat`, etc
+| Option     | Type          | Description
+| ---------- | ------------- | -----------
+| ape-secret | string        | value from the request header `ape-secret`
+| passcode   | string        | value from the request header `passcode`
+| wallet     | string        | wallet address
+| wallets    | array(string) | wallets, e.g. `eth`, `bsc` and `matic`, etc
+| farms      | array(string) | farms, e.g. `pancakeswapBsc` and `polycat`, etc
 
 - <sup>Visit [ApeBoard](https://apeboard.finance/) and take a look at the GET requests to find all the supported wallets and farms.</sup>
 

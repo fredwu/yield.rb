@@ -10,6 +10,8 @@ yieldwatch:
   jwt:
   file:
 apeboard:
+  ape-secret:
+  passcode:
   wallet:
   wallets:
     - bsc
