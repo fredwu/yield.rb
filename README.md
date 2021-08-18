@@ -112,10 +112,16 @@ These are the farms I use and therefore their outputs are tested.
 - [Adamant](https://adamant.finance/)
 - [AutoFarm](https://autofarm.network/)
 - [Beefy](https://beefy.finance/)
+- [EVOdefi](https://evo-matic.com/)
 - [Goose Finance](https://goosedefi.com/)
 - [PancakeBunny](https://pancakebunny.finance/)
 - [PancakeSwap](https://pancakeswap.finance/)
 - [PolyCat](https://polycat.finance/)
+- [PolyCrystal](https://polycrystal.finance/)
+- [PolygonFarm](https://polygonfarm.finance/)
+- [Sushi](https://sushi.com/)
+
+If a farm is supported on 0xTracker or ApeBoard, it should work fine.
 
 ## Wallet Trackers
 
