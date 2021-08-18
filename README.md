@@ -6,9 +6,9 @@ This is a simple ruby script that pulls data from supported yield trackers and e
 
 In YieldWatch, as much as I love the details it provides on yields, it lacks a consolidated view on how much underlying tokens I have. Imagine having deposited tokens into multiple liquidity pools (LPs) and having to manually find and add up the underlying tokens (not LP tokens) one by one...
 
-Some other wallet trackers support this, but none of them supports all the yield farms I use, namely ACryptoS.
+Some other wallet trackers support this, but none of them supports all the yield farms I use.
 
-As of June 2021, I've personally switched to using ApeBoard as it supports multiple blockchains (I use BSC and Polygon).
+As of July 2021, I've switched to using 0xTracker and ApeBoard. If a farm is supported in both then I'd use 0xTracker as it doesn't require a periodically updated auth token.
 
 Here's what the output data looks like:
 
