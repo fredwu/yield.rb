@@ -50,6 +50,9 @@ class ZeroxTracker
         parse_single(data)
       end
     end
+  rescue
+    puts "One of the farms returned invalid data:"
+    puts farm.inspect
   end
 
   def parse_single(data)
