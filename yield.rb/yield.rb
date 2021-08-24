@@ -63,6 +63,6 @@ class Yield
     @merged_amounts ||= Hash[amounts.flatten.inject do |result, token|
       token = token.transform_keys(&:upcase)
       result.merge(token) { |_, n1, n2| n1 + n2 }
-    end.reject{ |k, v| settings["hide_tokens"].include?(k) }.sort]
+    end.reject{ |k, v| settings["hide_tokens"] && settings["hide_tokens"].include?(k) }.sort]
   end
 end

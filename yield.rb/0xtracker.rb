@@ -51,7 +51,7 @@ class ZeroxTracker
       end
     end
   rescue
-    puts "One of the farms returned invalid data:"
+    puts "One of the 0xTracker farms returned invalid data:"
     puts farm.inspect
   end
 
