@@ -20,7 +20,9 @@ apeboard:
     - pancakeswapBsc
 0xtracker:
   wallet:
-  wallets: false
+  wallets:
+    - bsc
+    - matic
   farms:
     - mochiswap.io, bsc
 settings:

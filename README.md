@@ -48,10 +48,8 @@ Copy `config.sample.yml` to `config.yml`:
 | Option  | Type          | Description
 | ------- | ------------- | -----------
 | wallet  | string        | wallet address
-| wallets | boolean       | fetch wallet data or not
+| wallets | array(string) | wallets, e.g. `eth`, `bsc` and `matic`, etc
 | farms   | array(string) | farms, e.g. `mochiswap.io, bsc`
-
-- <sup>Does not support tracking wallet balances, for that use ApeBoard or YieldWatch.</sup>
 
 - <sup>Visit [0xTracker](https://0xtracker.app/) and take a look at the GET or POST requests to find all the supported farms.</sup>
 
