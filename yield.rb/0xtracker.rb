@@ -1,7 +1,7 @@
 class ZeroxTracker
-  API_URI       = "https://api.0xtracker.app/pool-data/"
-  FARM_LIST_URI = "https://api.0xtracker.app/farmlist/"
-  WALLET_URI    = "https://api.0xtracker.app/wallet-balance/"
+  API_URI       = "https://api.0xtracker.app/farms/"
+  FARM_LIST_URI = "https://api.0xtracker.app/farms-list/"
+  WALLET_URI    = "https://api.0xtracker.app/wallet/"
 
   attr_accessor :data
   attr_accessor :wallet
@@ -9,15 +9,16 @@ class ZeroxTracker
   def initialize(options = {})
     @wallet = options["wallet"]
 
+    wallets_data = options["wallets"]&.map do |w|
+      get_wallet_payload(w)
+    end&.map(&:value)&.flatten
+
     farm_list = JSON.parse(Utils.http_get(FARM_LIST_URI))
-
-    @data = options["farms"].map do |f|
+    farms_data = options["farms"]&.map do |f|
       get_farm_payload(f, farm_list)
-    end.map(&:value)
+    end&.map(&:value)
 
-    if options["wallets"]
-      @data += get_wallet_payload
-    end
+    @data = wallets_data + farms_data
   end
 
   def parse
@@ -76,18 +77,17 @@ class ZeroxTracker
   def get_farm_payload(name, farm_list)
     Thread.new do
       JSON.parse(
-        Utils.http_post(API_URI, {
-          "wallet" => wallet,
-          "farms" => [farm_address(name, farm_list)],
-        })
+        Utils.http_get("#{API_URI}#{wallet}/#{farm_address(name, farm_list)}")
       )
     end
   end
 
-  def get_wallet_payload
-    JSON.parse(
-      Utils.http_post(WALLET_URI, { "wallet" => wallet })
-    )
+  def get_wallet_payload(network)
+    Thread.new do
+      JSON.parse(
+        Utils.http_get("#{WALLET_URI}#{wallet}/#{network}")
+      )
+    end
   end
 
   def farm_address(name, farm_list)
