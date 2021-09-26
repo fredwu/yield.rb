@@ -76,17 +76,37 @@ class ZeroxTracker
 
   def get_farm_payload(name, farm_list)
     Thread.new do
-      JSON.parse(
-        Utils.http_get("#{API_URI}#{wallet}/#{farm_address(name, farm_list)}")
-      )
+      begin
+        retries ||= 0
+        JSON.parse(
+          Utils.http_get("#{API_URI}#{wallet}/#{farm_address(name, farm_list)}")
+        )
+      rescue
+        if (retries += 1) < 3
+          retry
+        else
+          puts "0xtracker: cannot fetch farm payload for #{name} (#{farm_address(name, farm_list)})."
+          {}
+        end
+      end
     end
   end
 
   def get_wallet_payload(network)
     Thread.new do
-      JSON.parse(
-        Utils.http_get("#{WALLET_URI}#{wallet}/#{network}")
-      )
+      begin
+        retries ||= 0
+        JSON.parse(
+          Utils.http_get("#{WALLET_URI}#{wallet}/#{network}")
+        )
+      rescue
+        if (retries += 1) < 3
+          retry
+        else
+          puts "0xtracker: cannot fetch wallet payload for #{network}."
+          {}
+        end
+      end
     end
   end
 
