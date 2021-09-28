@@ -104,20 +104,23 @@ Copy `config.sample.yml` to `config.yml`:
 
 ## Tested Farms / Yield Aggregators
 
-These are the farms I use and therefore their outputs are tested.
+These are the farms I have used and therefore their outputs are tested.
 
-- [ACryptoS](https://acryptos.com/)
-- [Adamant](https://adamant.finance/)
-- [AutoFarm](https://autofarm.network/)
-- [Beefy](https://beefy.finance/)
-- [EVOdefi](https://evo-matic.com/)
-- [Goose Finance](https://goosedefi.com/)
-- [PancakeBunny](https://pancakebunny.finance/)
-- [PancakeSwap](https://pancakeswap.finance/)
-- [PolyCat](https://polycat.finance/)
-- [PolyCrystal](https://polycrystal.finance/)
-- [PolygonFarm](https://polygonfarm.finance/)
-- [Sushi](https://sushi.com/)
+- [ACryptoS](https://acryptos.com/) - BSC
+- [Adamant](https://adamant.finance/) - Polygon
+- [AutoFarm](https://autofarm.network/) - BSC, Polygon
+- [Beefy](https://beefy.finance/) - BSC, Polygon
+- [Darkside](https://darkside.finance/) - Polygon
+- [EVOdefi](https://evo-matic.com/) - Polygon
+- [Goose Finance](https://goosedefi.com/) - BSC
+- [Moonpot](https://moonpot.com/) - BSC
+- [KogeFarm](https://kogefarm.io/) - Polygon
+- [PancakeBunny](https://pancakebunny.finance/) - BSC
+- [PancakeSwap](https://pancakeswap.finance/) - BSC
+- [PolyCat](https://polycat.finance/) - Polygon
+- [PolyCrystal](https://polycrystal.finance/) - Polygon
+- [PolygonFarm](https://polygonfarm.finance/) - Polygon
+- [Sushi](https://sushi.com/) - Polygon
 
 If a farm is supported on 0xTracker or ApeBoard, it should work fine.
 
