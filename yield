@@ -16,6 +16,7 @@ require_relative "./yield.rb/0xtracker.rb"
 require_relative "./yield.rb/apeboard.rb"
 require_relative "./yield.rb/exchange.rb"
 require_relative "./yield.rb/binance/spot.rb"
+require_relative "./yield.rb/binance/locked_staking.rb"
 require_relative "./yield.rb/bittrex.rb"
 require_relative "./yield.rb/coingecko.rb"
 require_relative "./yield.rb/manual.rb"
@@ -29,6 +30,7 @@ data = [
   options["0xtracker"] && Thread.new { ZeroxTracker.new(options["settings"].merge(options["0xtracker"])).parse },
   options["apeboard"] && Thread.new { ApeBoard.new(options["settings"].merge(options["apeboard"])).parse },
   options["binance"] && Thread.new { Binance::Spot.new(options["settings"].merge(options["binance"])).parse },
+  options["binance_locked_staking"] && Thread.new { Binance::LockedStaking.new(options["binance_locked_staking"]).parse },
   options["bittrex"] && Thread.new { Bittrex.new(options["settings"].merge(options["bittrex"])).parse },
   options["yieldwatch"] && Thread.new { YieldWatch.new(options["settings"].merge(options["yieldwatch"])).parse },
 ].compact.map(&:value)

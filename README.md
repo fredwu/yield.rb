@@ -89,6 +89,14 @@ Copy `config.sample.yml` to `config.yml`:
 
 - <sup>The `file` option is only needed if you don't want to supply the API and secret keys.</sup>
 
+#### Binance Locked Staking
+
+Binance unfortunately still does not provide an API endpoint for locked staking, so in this case the script will need the JSON payload from the "Earn -> Locked Staking" page.
+
+| Option     | Type   | Description
+| ---------- | ------ | -----------
+| file       | string | relative path to the JSON payload file from the locked staking page
+
 ## Assumptions
 
 1. You only care about the amounts of the underlying tokens - which changes all the time due to IL ([Impermanent Loss](https://www.google.com/search?q=impermanent+loss)).
