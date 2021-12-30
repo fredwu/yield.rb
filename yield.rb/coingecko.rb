@@ -57,7 +57,7 @@ class CoinGecko
         puts "  - #{i["name"]} (id: #{i["id"]})"
       end
 
-      exit
+      ""
     elsif names.length == 0
       puts "Token #{name} cannot be found on CoinGecko, consider hiding it."
     else
