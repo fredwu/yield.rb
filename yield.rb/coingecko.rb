@@ -42,13 +42,16 @@ class CoinGecko
   end
 
   def detect_token_id(name)
-    names = list.select do |i|
-      if mapped_name = settings["token_names"][name]
-        i["name"].downcase == mapped_name.downcase
-      else
-        i["symbol"].downcase == name.downcase
+    names =
+      list.reject do |i|
+        i["name"] =~ /(Wormhole)|(Avalanche Bridged)/
+      end.select do |i|
+        if mapped_name = settings["token_names"][name]
+          i["name"].downcase == mapped_name.downcase
+        else
+          i["symbol"].downcase == name.downcase
+        end
       end
-    end
 
     if names.length > 1
       puts "Token #{name} is ambigious, found #{names.length} different ones, please map the correct one."
