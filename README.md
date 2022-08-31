@@ -27,15 +27,15 @@ Copy `config.sample.yml` to `config.yml`:
 
 ### Configurations
 
-| Option         | Type           | Description
-| -------------- | -------------- | -----------
-| format         | string         | `json` or `text`
-| currencies     | array(string)  | currency ISO codes, e.g. `USD`
-| rounding       | integer        | decimal rounding, defaults to 6
-| token_names    | string: string | token name mapping
-| token_mappings | array(string)  | token code mapping, e.g. to map `BTCB` to `BTC`
-| hide_tokens    | array(string)  | tokens that should be hidden from output
-| include_tokens | string: float  | manually add tokens and their amounts
+| Option         | Type           | Description                                     |
+| -------------- | -------------- | ----------------------------------------------- |
+| format         | string         | `json` or `text`                                |
+| currencies     | array(string)  | currency ISO codes, e.g. `USD`                  |
+| rounding       | integer        | decimal rounding, defaults to 6                 |
+| token_names    | string: string | token name mapping                              |
+| token_mappings | array(string)  | token code mapping, e.g. to map `BTCB` to `BTC` |
+| hide_tokens    | array(string)  | tokens that should be hidden from output        |
+| include_tokens | string: float  | manually add tokens and their amounts           |
 
 - <sup>In some cases token symbols are not unique (e.g. `BUNNY` can be `Pancake Bunny`, `BunnyToken` or `Rocket Bunny`), in this case they need to be added to the `token_names` mapping. Search [CoinGecko](https://www.coingecko.com/) for their names.</sup>
 
@@ -45,11 +45,11 @@ Copy `config.sample.yml` to `config.yml`:
 
 #### 0xTracker
 
-| Option  | Type          | Description
-| ------- | ------------- | -----------
-| wallet  | string        | wallet address
-| wallets | array(string) | wallets, e.g. `eth`, `bsc` and `matic`, etc
-| farms   | array(string) | farms, e.g. `mochiswap.io, bsc`
+| Option  | Type          | Description                                 |
+| ------- | ------------- | ------------------------------------------- |
+| wallet  | string        | wallet address                              |
+| wallets | array(string) | wallets, e.g. `eth`, `bsc` and `matic`, etc |
+| farms   | array(string) | farms, e.g. `mochiswap.io, bsc`             |
 
 - <sup>Visit [0xTracker](https://0xtracker.app/) and take a look at the GET or POST requests to find all the supported farms.</sup>
 
@@ -57,23 +57,23 @@ Copy `config.sample.yml` to `config.yml`:
 
 #### ApeBoard
 
-| Option     | Type          | Description
-| ---------- | ------------- | -----------
-| ape-secret | string        | value from the request header `ape-secret`
-| passcode   | string        | value from the request header `passcode`
-| wallet     | string        | wallet address
-| wallets    | array(string) | wallets, e.g. `eth`, `bsc` and `matic`, etc
-| farms      | array(string) | farms, e.g. `pancakeswapBsc` and `polycat`, etc
+| Option     | Type          | Description                                     |
+| ---------- | ------------- | ----------------------------------------------- |
+| ape-secret | string        | value from the request header `ape-secret`      |
+| passcode   | string        | value from the request header `passcode`        |
+| wallet     | string        | wallet address                                  |
+| wallets    | array(string) | wallets, e.g. `eth`, `bsc` and `matic`, etc     |
+| farms      | array(string) | farms, e.g. `pancakeswapBsc` and `polycat`, etc |
 
 - <sup>Visit [ApeBoard](https://apeboard.finance/) and take a look at the GET requests to find all the supported wallets and farms.</sup>
 
 #### YieldWatch
 
-| Option | Type   | Description
-| ------ | ------ | -----------
-| wallet | string | wallet address
-| jwt    | string | YieldWatch JWT
-| file   | string | relative path to the YieldWatch JSON payload file
+| Option | Type   | Description                                       |
+| ------ | ------ | ------------------------------------------------- |
+| wallet | string | wallet address                                    |
+| jwt    | string | YieldWatch JWT                                    |
+| file   | string | relative path to the YieldWatch JSON payload file |
 
 - <sup>Please note that if you are using the wallet address, the wallet balances will be missing from the calculation. To include the wallet balances, go to YieldWatch, fetch your wallet, and open the browser console to copy the JSON payload.</sup>
 
@@ -81,21 +81,13 @@ Copy `config.sample.yml` to `config.yml`:
 
 #### Binance & Bittrex
 
-| Option     | Type   | Description
-| ---------- | ------ | -----------
-| api_key    | string | API key
-| secret_key | string | secret key
-| file       | string | relative path to the JSON payload file from the API
+| Option     | Type   | Description                                         |
+| ---------- | ------ | --------------------------------------------------- |
+| api_key    | string | API key                                             |
+| secret_key | string | secret key                                          |
+| file       | string | relative path to the JSON payload file from the API |
 
 - <sup>The `file` option is only needed if you don't want to supply the API and secret keys.</sup>
-
-#### Binance Locked Staking
-
-Binance unfortunately still does not provide an API endpoint for locked staking, so in this case the script will need the JSON payload from the "Earn -> Locked Staking" page.
-
-| Option     | Type   | Description
-| ---------- | ------ | -----------
-| file       | string | relative path to the JSON payload file from the locked staking page
 
 ## Assumptions
 

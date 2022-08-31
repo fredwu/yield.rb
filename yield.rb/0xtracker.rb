@@ -1,7 +1,7 @@
 class ZeroxTracker
-  API_URI       = "https://api.0xtracker.app/farms/"
+  API_URI = "https://api.0xtracker.app/farms/"
   FARM_LIST_URI = "https://api.0xtracker.app/farms-list/"
-  WALLET_URI    = "https://api.0xtracker.app/wallet/"
+  WALLET_URI = "https://api.0xtracker.app/wallet/"
 
   attr_accessor :data
   attr_accessor :wallet
@@ -11,12 +11,12 @@ class ZeroxTracker
 
     wallets_data = options["wallets"]&.map do |w|
       get_wallet_payload(w)
-    end&.map(&:value)&.flatten
+    end&.map(&:value)&.flatten || []
 
     farm_list = JSON.parse(Utils.http_get(FARM_LIST_URI))
     farms_data = options["farms"]&.map do |f|
       get_farm_payload(f, farm_list)
-    end&.map(&:value)
+    end&.map(&:value) || []
 
     @data = wallets_data + farms_data
   end
@@ -65,7 +65,7 @@ class ZeroxTracker
   def parse_lp(data)
     lpTotal = data["elevenBalance"]&.tr("(", "")&.tr(")", "") || data["lpTotal"]
 
-    symbols  = data["tokenPair"].split("/")
+    symbols = data["tokenPair"].split("/")
     balances = lpTotal.split("/")
 
     [

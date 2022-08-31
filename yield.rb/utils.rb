@@ -1,8 +1,8 @@
-require 'bigdecimal'
+require "bigdecimal"
 
 module Utils
   class << self
-    def http_get(uri, headers={})
+    def http_get(uri, headers = {})
       uri = URI(uri)
       res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
         req = Net::HTTP::Get.new(uri)
@@ -31,9 +31,15 @@ module Utils
       res.body
     end
 
-    def binance_http_get(api_uri, api_key, secret_key)
+    def binance_http_get(api_uri, api_key, secret_key, extra_params = "")
       timestamp = Time.now.to_i * 1000
-      params = "timestamp=#{timestamp}"
+
+      params = if extra_params.empty?
+          "timestamp=#{timestamp}"
+        else
+          "#{extra_params}&timestamp=#{timestamp}"
+        end
+
       signature = OpenSSL::HMAC.hexdigest("sha256", secret_key, params)
       params = "#{params}&signature=#{signature}"
       uri = URI("#{api_uri}?#{params}")
@@ -54,9 +60,9 @@ module Utils
 
     def token_name(name)
       mapping ||= begin
-        options = YAML.load_file(File.join(__dir__, "../config.yml"))
-        options["settings"]["token_mappings"].map { |k, v| [v, k] }.to_h
-      end
+          options = YAML.load_file(File.join(__dir__, "../config.yml"))
+          options["settings"]["token_mappings"].map { |k, v| [v, k] }.to_h
+        end
 
       mapping.each do |names, real_name|
         name = name.sub(/^acs(\w+)/, '\1')

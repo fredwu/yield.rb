@@ -7,7 +7,7 @@ class ApeBoard
 
   def initialize(options = {})
     @options = options
-    @wallet  = options["wallet"]
+    @wallet = options["wallet"]
 
     wallets_data = options["wallets"]&.map do |w|
       get_payload(w, "wallet")
@@ -86,7 +86,7 @@ class ApeBoard
               "passcode" => options["passcode"],
             }
           )
-        )
+        ),
       }
     end
   end
