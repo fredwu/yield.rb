@@ -1,6 +1,6 @@
 class CoinGecko
   LIST_URI = "https://api.coingecko.com/api/v3/coins/list?include_platform=false"
-  COIN_URI = "https://api.coingecko.com/api/v3/coins/markets?&order=market_cap_desc&sparkline=false&per_page=1"
+  COIN_URI = "https://api.coingecko.com/api/v3/coins/markets?&order=market_cap_desc&sparkline=false&per_page=250"
 
   attr_accessor :settings
   attr_accessor :list
@@ -8,18 +8,18 @@ class CoinGecko
 
   def initialize(settings = {})
     @settings = settings
-    @coins    = {}
+    @coins = {}
   end
 
   def fetch!(names)
-    @list  = JSON.parse(Utils.http_get(LIST_URI))
-    ids    = names.map { |n| detect_token_id(n) }
+    @list = JSON.parse(Utils.http_get(LIST_URI))
+    ids = names.map { |n| detect_token_id(n) }
     @coins = settings["currencies"].map do |c|
       [
         c,
         JSON.parse(
-          Utils.http_get("#{COIN_URI}&vs_currency=#{c}&ids=#{ids.join(',')}")
-        )
+          Utils.http_get("#{COIN_URI}&vs_currency=#{c}&ids=#{ids.join(",")}")
+        ),
       ]
     end.to_h
   end
@@ -33,7 +33,7 @@ class CoinGecko
   private
 
   def do_value(name, currency, amount)
-    id    = detect_token_id(name)
+    id = detect_token_id(name)
     price = coins[currency].detect { |c| c["id"] == id }["current_price"]
 
     amount * price
